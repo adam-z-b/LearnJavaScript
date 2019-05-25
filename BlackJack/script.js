@@ -23,13 +23,16 @@ function CreateDeck() {
 // deck of cards,
 let deck = CreateDeck();
 
-for (var i = 0; i < deck.length; i++) {
-  console.log( deck[i] );
+function GetNextCard() {
+  return deck.shift();
 }
+// for (var i = 0; i < deck.length; i++) {
+//   console.log( deck[i] );
+// }
 
 let playerCards = [
-  deck[0],
-  deck[2]
+  GetNextCard(),
+  GetNextCard()
 ];
 
 
