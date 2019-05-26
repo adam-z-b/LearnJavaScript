@@ -10,10 +10,29 @@ let values = [ "Ace", "King", "Queen", "Jack", "Ten",
               "Four", "Three", "Two", "One"
             ];
 
-let teatArea = document.getElementById( "text-area" );
+let textArea = document.getElementById( "text-area" );
 let newGameButton = document.getElementById( "newGame-button" );
 let hitButton = document.getElementById( "hit-button" );
 let stayButton = document.getElementById( "stay-button" );
+InitGame();
+
+function InitGame() {
+  HideButtons();
+  AddEvenHandlers();
+}
+
+function AddEvenHandlers() {
+  newGameButton.addEventListener( "click", function () {
+    textArea.innerText = "Started...";
+    newGameButton.style.display = "none";
+    hitButton.style.display = "inline";
+    stayButton.style.display = "inline";
+  });
+}
+function HideButtons() {
+  hitButton.style.display = "none";
+  stayButton.style.display = "none";
+}
 
 function CreateDeck() {
   let tempDeck = [];
