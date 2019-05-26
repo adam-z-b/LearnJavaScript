@@ -15,7 +15,11 @@ function CreateDeck() {
   // all possible cards
   for (var suitIdx = 0; suitIdx < suits.length; ++suitIdx ) {
     for (var valuesIdx = 0; valuesIdx < values.length; ++valuesIdx ) {
-      tempDeck.push( values[valuesIdx] + " of " + suits[suitIdx] );
+      let card = {
+        suit: suits[suitIdx],
+        value: values[valuesIdx]
+      };
+      tempDeck.push( card );
     }
   }
   return tempDeck;
@@ -26,17 +30,17 @@ let deck = CreateDeck();
 function GetNextCard() {
   return deck.shift();
 }
-// for (var i = 0; i < deck.length; i++) {
-//   console.log( deck[i] );
-// }
 
 let playerCards = [
   GetNextCard(),
   GetNextCard()
 ];
 
+function GetCardString( card ) {
+  return card.value + " of " + card.suit;
+}
 
 console.log( "Welcome to Blackjack!" );
 console.log( "You are dealt:" );
-console.log( " " + playerCards[0] );
-console.log( " " + playerCards[1] );
+console.log( " " + GetCardString( playerCards[0] ) );
+console.log( " " + GetCardString( playerCards[1] ) )
