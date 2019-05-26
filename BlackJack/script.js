@@ -10,6 +10,11 @@ let values = [ "Ace", "King", "Queen", "Jack", "Ten",
               "Four", "Three", "Two", "One"
             ];
 
+let teatArea = document.getElementById( "text-area" );
+let newGameButton = document.getElementById( "newGame-button" );
+let hitButton = document.getElementById( "hit-button" );
+let stayButton = document.getElementById( "stay-button" );
+
 function CreateDeck() {
   let tempDeck = [];
   // all possible cards
