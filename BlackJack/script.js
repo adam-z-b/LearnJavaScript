@@ -76,8 +76,15 @@ function AddEventHandlers() {
     if ( playerScore > 21 ) {
       gameOver = true;
       playerWon = false;
+    } else if ( playerScore === 21 ) {
+      gameOver = true;
+      playerWon = true;
     }
     ShowStatus();
+  });
+
+  stayButton.addEventListener( "click", function() {
+
   });
 }
 
