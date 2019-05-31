@@ -66,6 +66,17 @@ function AddEventHandlers() {
     // console.log( dealerCards[0].value +" of " + dealerCards[0].suit + "\n" );
     playerCards = [ GetNexCard(), GetNexCard() ];
     // console.log( playerCards[0].value +" of " + playerCards[0].suit + "\n" );
+    UpdateScores();
+    ShowStatus();
+  });
+
+  hitButton.addEventListener( "click", function() {
+    playerCards.push( GetNexCard() );
+    UpdateScores();
+    if ( playerScore > 21 ) {
+      gameOver = true;
+      playerWon = false;
+    }
     ShowStatus();
   });
 }
@@ -118,7 +129,7 @@ function ShowStatus() {
   console.log( dealerCardsString );
   let playerCardsString = GetCardsString( playerCards );
 
-  UpdateScores();
+  // UpdateScores();
 
   textArea.innerText =
         "Dealer has:\n" +
