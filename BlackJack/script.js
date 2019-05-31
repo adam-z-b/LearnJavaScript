@@ -7,8 +7,22 @@ taken from pluralsight js course.
 let suits = [ "Hearts", "Clubs", "Diamonds", "Speades" ];
 let values = [ "Ace", "King", "Queen", "Jack", "Ten",
               "Nine", "Eight", "Seven", "Six", "Five",
-              "Four", "Three", "Two", "One"
+              "Four", "Three", "Two"
             ];
+let cardValues = {};
+  cardValues[ "Ace" ] = 1;
+  cardValues[ "King" ] = 10;
+  cardValues[ "Queen" ] = 10;
+  cardValues[ "Jack" ] = 10;
+  cardValues[ "Ten" ] = 10;
+  cardValues[ "Nine" ] = 9;
+  cardValues[ "Eight" ] = 8;
+  cardValues[ "Seven" ] = 7;
+  cardValues[ "Six" ] = 6;
+  cardValues[ "Five" ] = 5;
+  cardValues[ "Four" ] = 4;
+  cardValues[ "Three" ] = 3;
+  cardValues[ "Two" ] = 2;
 
 let textArea = document.getElementById( "text-area" );
 let newGameButton = document.getElementById( "newGame-button" );
@@ -109,9 +123,11 @@ function ShowStatus() {
   textArea.innerText =
         "Dealer has:\n" +
         dealerCardsString +
+        "Score: " + dealerScore +
         "\n\n" +
         "Player has:\n"  +
         playerCardsString +
+        "Score: " + playerScore
         "\n\n"
         if ( gameOver ) {
           if ( playerWon ) {
@@ -127,6 +143,28 @@ function ShowStatus() {
 }
 
 function UpdateScores() {
+  dealerScore = GetScore( dealerCards );
+  playerScore = GetScore( playerCards );
+}
+
+function GetScore( cards ) {
+  let score = 0;
+  let hasAce = false;
+  for ( let i = 0; i < cards.length; ++i ) {
+    let card = cards[i];
+    score += cardValues[ card.value ];
+    if ( card.value === "Ace" ) {
+      hasAce = true;
+    }
+  }
+
+  if ( hasAce && score + 10 <= 21 ) {
+    score += 10;
+  }
+  return score;
+}
+
+function GetNumericValue( card ) {
 
 }
 
