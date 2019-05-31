@@ -84,12 +84,40 @@ function AddEventHandlers() {
   });
 
   stayButton.addEventListener( "click", function() {
-
+    // if we got here played cannot have 21 points.
+    UpdateDealearsHand();
+    gameOver = true;
+    playerWon = true;
+    if ( dealerScore <= 21 && dealerScore > playerScore ) {
+      playerWon = false;
+    }
+    ShowStatus();
   });
 }
 
-function CheckForEndOfGame() {
+function UpdateDealearsHand() {
+  while ( dealerScore < 21 && dealerScore < playerScore ) {
+    if ( dealerScore >= 17 && dealerCards.length <= 6 ) {
+      if( HasAce( dealerCards ) ){
+        dealerCards.push( GetNexCard() );
+      } else {
+        break;
+      }
+    } else {
+      dealerCards.push( GetNexCard() );
+    }
+    dealerScore = GetScore( dealerCards );
+  }
+  dealerScore = GetScore( dealerCards );
+}
 
+function HasAce( cards ) {
+  for (var i = 0; i < cards.length; ++i ) {
+    if ( cards[i].value === "Ace" ) {
+      return true;
+    }
+  }
+  return false;
 }
 function GetNexCard() {
   let card = deck.shift();
