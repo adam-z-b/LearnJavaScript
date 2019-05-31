@@ -81,6 +81,9 @@ function AddEventHandlers() {
   });
 }
 
+function CheckForEndOfGame() {
+
+}
 function GetNexCard() {
   let card = deck.shift();
   return card;
@@ -126,7 +129,6 @@ function ShowStatus() {
   }
 
   let dealerCardsString = GetCardsString( dealerCards );
-  console.log( dealerCardsString );
   let playerCardsString = GetCardsString( playerCards );
 
   // UpdateScores();
@@ -138,13 +140,13 @@ function ShowStatus() {
         "\n\n" +
         "Player has:\n"  +
         playerCardsString +
-        "Score: " + playerScore
+        "Score: " + playerScore +
         "\n\n"
         if ( gameOver ) {
           if ( playerWon ) {
-            textArea.innerText = "You Win. WTG.\n";
+            textArea.innerText += "You Win. WTG.\n";
           } else {
-            textArea.innerText = "Dealer Won.\nBetter luck netx time...\n";
+            textArea.innerText += "Dealer Won.\nBetter luck netx time...\n";
           }
           newGameButton.style.display = "inline";
           newGameButton.style.innerText = "Start another game.";
